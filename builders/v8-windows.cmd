@@ -14,6 +14,8 @@ set PATH=%CD%\depot_tools;%PATH%
 set DEPOT_TOOLS_WIN_TOOLCHAIN=0
 call gclient
 
+call python --version
+
 
 mkdir v8
 cd v8
