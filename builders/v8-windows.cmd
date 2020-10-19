@@ -11,7 +11,9 @@ dir %GITHUB_WORKSPACE%\v8-8.6.393\third_party\inspector_protocol\
 cd %HOMEPATH%
 echo =====[ Getting Depot Tools ]=====
 git clone -q https://chromium.googlesource.com/chromium/tools/depot_tools.git
+cd depot_tools
 git checkout aa494771a85e13ec0b05546ae557f04452d4e0e1
+cd ..
 set PATH=%CD%\depot_tools;%PATH%
 set DEPOT_TOOLS_WIN_TOOLCHAIN=0
 call gclient
