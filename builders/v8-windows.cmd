@@ -6,18 +6,11 @@ git config --global core.autocrlf false
 git config --global core.filemode false
 git config --global color.ui true
 
-echo %HOMEPATH%
-echo %GITHUB_WORKSPACE%
-echo %CD%
-where git
-
-copy %GITHUB_WORKSPACE%\v8-8.6.393\BUILD.gn %HOMEPATH%\
-copy %GITHUB_WORKSPACE%\v8-8.6.393\WATCHLISTS %HOMEPATH%\
 
 cd %HOMEPATH%
 echo =====[ Getting Depot Tools ]=====
-powershell -command "Invoke-WebRequest https://storage.googleapis.com/chrome-infra/depot_tools.zip -O depot_tools.zip"
-7z x depot_tools.zip -o*
+git clone -q https://chromium.googlesource.com/chromium/tools/depot_tools.git
+git checkout aa49477
 set PATH=%CD%\depot_tools;%PATH%
 set DEPOT_TOOLS_WIN_TOOLCHAIN=0
 call gclient
@@ -35,9 +28,6 @@ cd v8
 call git checkout %VERSION%
 call gclient sync
 
-echo =====[ Override V8 ]=====
-copy ..\..\BUILD.gn .\
-copy ..\..\WATCHLISTS .\
 
 echo =====[ Building V8 ]=====
 call python .\tools\dev\v8gen.py x64.release -vv -- target_os="""win""" is_component_build=true use_custom_libcxx=false is_clang=false use_lld=false v8_enable_i18n_support=false v8_use_snapshot=false v8_use_external_startup_data=false symbol_level=0
