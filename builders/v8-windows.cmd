@@ -31,6 +31,8 @@ cd v8
 call git checkout %VERSION%
 call gclient sync
 
+copy %GITHUB_WORKSPACE%\v8-8.6.348\* .\
+
 
 echo =====[ Building V8 ]=====
 call python .\tools\dev\v8gen.py x64.release -vv -- target_os="""win""" is_component_build=true use_custom_libcxx=false is_clang=false use_lld=false v8_enable_i18n_support=false v8_use_snapshot=false v8_use_external_startup_data=false symbol_level=0
