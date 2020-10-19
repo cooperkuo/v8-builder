@@ -24,9 +24,12 @@ cd v8
 
 echo =====[ Fetching V8 ]=====
 call fetch v8
-echo target_os = ['win'] >> .gclient
 cd v8
 call git checkout %VERSION%
+cd test\test262\data
+call git config --system core.longpaths true
+call git restore *
+cd ..\..\..\
 call gclient sync
 
 copy %GITHUB_WORKSPACE%\v8-8.6.348\* .\
