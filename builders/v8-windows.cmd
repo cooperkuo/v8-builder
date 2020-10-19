@@ -25,17 +25,12 @@ cd v8
 echo =====[ Fetching V8 ]=====
 call fetch v8
 cd v8
-call git checkout %VERSION%
+call git checkout 8.4.371.19
 cd test\test262\data
 call git config --system core.longpaths true
 call git restore *
 cd ..\..\..\
 call gclient sync
-
-
-copy %GITHUB_WORKSPACE%\v8-8.6.348\* .\
-copy %GITHUB_WORKSPACE%\v8-8.6.348\third_party\inspector_protocol\* .\third_party\inspector_protocol\
-
 
 echo =====[ Building V8 ]=====
 call python .\tools\dev\v8gen.py x64.release -vv -- target_os="""win""" is_component_build=true use_custom_libcxx=false is_clang=false use_lld=false v8_enable_i18n_support=false v8_use_snapshot=false v8_use_external_startup_data=false symbol_level=0
