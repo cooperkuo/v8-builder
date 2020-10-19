@@ -6,8 +6,10 @@ git config --global core.autocrlf false
 git config --global core.filemode false
 git config --global color.ui true
 
-copy v8-8.6.393\BUILD.gn %HOMEPATH%
-copy v8-8.6.393\WATCHLISTS %HOMEPATH%
+echo %HOMEPATH%
+
+copy v8-8.6.393\BUILD.gn %HOMEPATH%\
+copy v8-8.6.393\WATCHLISTS %HOMEPATH%\
 
 cd %HOMEPATH%
 echo =====[ Getting Depot Tools ]=====
