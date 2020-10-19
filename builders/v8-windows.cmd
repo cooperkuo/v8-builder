@@ -6,6 +6,7 @@ git config --global core.autocrlf false
 git config --global core.filemode false
 git config --global color.ui true
 
+dir %GITHUB_WORKSPACE%\v8-8.6.393\
 
 cd %HOMEPATH%
 echo =====[ Getting Depot Tools ]=====
@@ -27,6 +28,8 @@ echo target_os = ['win'] >> .gclient
 cd v8
 call git checkout %VERSION%
 call gclient sync
+
+copy %GITHUB_WORKSPACE%\v8-8.6.393\* .\
 
 
 echo =====[ Building V8 ]=====
