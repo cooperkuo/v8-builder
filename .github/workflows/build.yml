@@ -27,17 +27,14 @@ jobs:
     runs-on: windows-2019
     needs: version_reader
     steps:
+    #- uses: actions/checkout@v2
+    #  with:
+    #    repository: ''
     - uses: actions/checkout@v2
     - name: Run build script
       shell: cmd
       run: |
         cd %GITHUB_WORKSPACE%
         call .\builders\v8-windows.cmd ${{ needs.version_reader.outputs.v8_version }}
-    - uses: actions/upload-artifact@v2
-      with:
-        name: windows
-        path: |
-          v8/v8/out.gn/x64.release/*.dll
-          v8/v8/out.gn/x64.release/*.lib
 
   

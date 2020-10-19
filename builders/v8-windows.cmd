@@ -7,9 +7,11 @@ git config --global core.filemode false
 git config --global color.ui true
 
 echo %HOMEPATH%
+echo %GITHUB_WORKSPACE%
+echo %CD%
 
-copy v8-8.6.393\BUILD.gn %HOMEPATH%\
-copy v8-8.6.393\WATCHLISTS %HOMEPATH%\
+copy %GITHUB_WORKSPACE%\v8-8.6.393\BUILD.gn %HOMEPATH%\
+copy %GITHUB_WORKSPACE%\v8-8.6.393\WATCHLISTS %HOMEPATH%\
 
 cd %HOMEPATH%
 echo =====[ Getting Depot Tools ]=====
