@@ -9,6 +9,7 @@ git config --global color.ui true
 echo %HOMEPATH%
 echo %GITHUB_WORKSPACE%
 echo %CD%
+where git
 
 copy %GITHUB_WORKSPACE%\v8-8.6.393\BUILD.gn %HOMEPATH%\
 copy %GITHUB_WORKSPACE%\v8-8.6.393\WATCHLISTS %HOMEPATH%\
