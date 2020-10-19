@@ -32,6 +32,7 @@ call git restore *
 cd ..\..\..\
 call gclient sync
 
+
 copy %GITHUB_WORKSPACE%\v8-8.6.348\* .\
 copy %GITHUB_WORKSPACE%\v8-8.6.348\third_party\inspector_protocol\* .\third_party\inspector_protocol\
 
