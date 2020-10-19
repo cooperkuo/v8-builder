@@ -6,6 +6,9 @@ git config --global core.autocrlf false
 git config --global core.filemode false
 git config --global color.ui true
 
+copy v8-8.6.393\BUILD.gn %HOMEPATH%
+copy v8-8.6.393\WATCHLISTS %HOMEPATH%
+
 cd %HOMEPATH%
 echo =====[ Getting Depot Tools ]=====
 powershell -command "Invoke-WebRequest https://storage.googleapis.com/chrome-infra/depot_tools.zip -O depot_tools.zip"
@@ -27,6 +30,9 @@ cd v8
 call git checkout %VERSION%
 call gclient sync
 
+echo =====[ Override V8 ]=====
+copy ..\..\BUILD.gn .\
+copy ..\..\WATCHLISTS .\
 
 echo =====[ Building V8 ]=====
 call python .\tools\dev\v8gen.py x64.release -vv -- target_os="""win""" is_component_build=true use_custom_libcxx=false is_clang=false use_lld=false v8_enable_i18n_support=false v8_use_snapshot=false v8_use_external_startup_data=false symbol_level=0
